@@ -15,8 +15,7 @@ private:
   bool systemInitialized = false;
 
 public:
-  AudioSystem()
-    : audioHandler(&gpio) {}
+  AudioSystem() {}
 
   void initialize() {
     if (systemInitialized) return;
@@ -32,22 +31,23 @@ public:
 
 private:
   void handleButtonInput() {
-    bool buttonState = digitalRead(BUTTON_PIN) == LOW;  // LOW = pressed
+    bool buttonState = digitalRead(BUTTON_PIN) == LOW;
     if (buttonState && !buttonPressed) {
       buttonPressed = true;
       onButtonPressed();
+    } else if (!buttonState) {
+      buttonPressed = false;
     }
-    buttonPressed = false;
   }
 
   void onButtonPressed() {
     Serial.println("Button pressed");
 
     if (jsonHandler.isValid()) {
-      Serial.println("✓ JSON geldig - geluid 1 afspelen");
+      Serial.println("JSON geldig - geluid 1 afspelen");
       audioHandler.playSuccess();
     } else {
-      Serial.println("✗ JSON ongeldig - geluid 2 afspelen");
+      Serial.println("JSON ongeldig - geluid 2 afspelen");
       audioHandler.playError();
     }
   }

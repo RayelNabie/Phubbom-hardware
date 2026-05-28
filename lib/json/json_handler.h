@@ -4,7 +4,6 @@
 #include <ArduinoJson.h>
 #include "config.h"
 
-// State Pattern: JSON validation state
 enum JSONState {
   JSON_INVALID,
   JSON_VALID,
@@ -20,8 +19,6 @@ private:
   })";
 
   JSONState state = JSON_INVALID;
-  String audioFile = "";
-  int countdownValue = 0;
 
 public:
   void validate() {
@@ -37,21 +34,14 @@ public:
       return;
     }
 
-    if (!doc.containsKey("audio") || !doc.containsKey("countdown")) {
+    if (!doc["audio"].is<const char*>() || !doc["countdown"].is<int>()) {
       Serial.println("missing fields in JSON");
       state = JSON_MISSING_FIELDS;
       return;
     }
 
-    audioFile = doc["audio"].as<String>();
-    countdownValue = doc["countdown"];
     state = JSON_VALID;
-
     Serial.println(" JSON valid!");
-    Serial.print("  Audio: ");
-    Serial.println(audioFile);
-    Serial.print("  Countdown: ");
-    Serial.println(countdownValue);
   }
 
   bool isValid() const {

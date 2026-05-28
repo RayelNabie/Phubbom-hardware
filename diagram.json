@@ -3,64 +3,28 @@
   "author": "Anonymous maker",
   "editor": "wokwi",
   "parts": [
-    { "type": "board-esp32-c3-devkitm-1", "id": "esp", "top": -182.7, "left": 5.82, "attrs": {} },
+    { "type": "board-esp32-c3-devkitm-1", "id": "esp", "top": 0, "left": 0, "attrs": {} },
     {
       "type": "wokwi-pushbutton",
       "id": "btn",
-      "top": -268.9,
-      "left": -73.3,
+      "top": -80,
+      "left": -120,
       "rotate": 90,
       "attrs": { "color": "red" }
-    },
-    { "type": "wokwi-slide-switch", "id": "sw", "top": -302.8, "left": 31.9, "attrs": {} },
-    {
-      "type": "wokwi-led",
-      "id": "led_motor",
-      "top": -61.2,
-      "left": -149.8,
-      "attrs": { "color": "green", "label": "MOTOR" }
-    },
-    {
-      "type": "wokwi-resistor",
-      "id": "r1",
-      "top": -235.2,
-      "left": 9.05,
-      "rotate": 90,
-      "attrs": { "value": "220" }
-    },
-    { "type": "wokwi-rgb-led", "id": "rgb1", "top": -274.4, "left": 231.5, "attrs": {} },
-    {
-      "type": "wokwi-dc-motor",
-      "id": "vibMotor",
-      "top": -150,
-      "left": -300,
-      "attrs": { "label": "Tril-Motor (2.5-4V)" }
     },
     {
       "type": "wokwi-buzzer",
       "id": "buzzer",
-      "top": -458.4,
-      "left": 49.8,
-      "attrs": { "label": "Buzzer/Speaker" }
+      "top": -80,
+      "left": 120,
+      "attrs": { "label": "Buzzer" }
     }
   ],
   "connections": [
-    [ "esp:10", "btn:1.r", "green", [ "h0" ] ],
-    [ "btn:2.r", "esp:GND.1", "blue", [ "v0" ] ],
-    [ "esp:6", "rgb1:R", "red", [ "h142.72", "v-134.4" ] ],
-    [ "rgb1:COM", "esp:GND.7", "black", [ "v143.6", "h-152.22" ] ],
-    [ "rgb1:G", "esp:7", "green", [ "v0" ] ],
-    [ "rgb1:B", "esp:8", "blue", [ "v0" ] ],
-    [ "esp:5", "r1:1", "green", [ "h0" ] ],
-    [ "r1:2", "led_motor:A", "green", [ "v0" ] ],
-    [ "led_motor:C", "esp:GND.4", "black", [ "v0" ] ],
-    [ "esp:3", "buzzer:2", "blue", [ "h-105.6", "v-211.2", "h182.8" ] ],
-    [ "buzzer:1", "esp:GND.2", "black", [ "v28.8", "h-182.4", "v230.4" ] ],
-    [ "esp:4", "sw:2", "green", [ "h0" ] ],
-    [ "sw:3", "esp:GND.10", "black", [ "h27.52", "v-28.8", "h-67.4" ] ],
-    [ "esp:3V3.1", "sw:1", "red", [ "h0" ] ],
-    [ "esp:1", "vibMotor:1", "green", [ "h0" ] ],
-    [ "vibMotor:2", "esp:GND.3", "black", [ "h0" ] ]
+    [ "esp:2", "btn:1.r", "green", [] ],
+    [ "btn:2.r", "esp:GND.1", "black", [] ],
+    [ "esp:3", "buzzer:1", "green", [] ],
+    [ "buzzer:2", "esp:GND.2", "black", [] ]
   ],
   "dependencies": {}
 }
