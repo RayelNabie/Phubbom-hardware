@@ -1,0 +1,23 @@
+# PlatformIO
+.pio/
+
+# IDEs
+.idea/
+.vscode/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Claude
+.claude
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Environment vars
+.env
+.env.*

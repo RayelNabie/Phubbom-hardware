@@ -3,7 +3,6 @@
 
 #include "config.h"
 
-// Encapsulation Pattern: Alle GPIO zaken hier
 class GPIOManager {
 public:
   void init() {
