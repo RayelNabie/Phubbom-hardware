@@ -1,7 +1,10 @@
 # PlatformIO
 .pio/
 compile_commands.json
+
+# System
 .cache/
+audio/
 
 # IDEs
 .idea/

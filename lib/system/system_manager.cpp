@@ -13,6 +13,9 @@ void AudioSystem::initialize() {
   if (systemInitialized) return;
   GPIOManager::init();
   jsonHandler.validate();
+#ifdef FEATURE_DFPLAYER
+  DFPlayerHandler::initialize();
+#endif
   systemInitialized = true;
 }
 
@@ -47,6 +50,9 @@ void AudioSystem::onButtonPressed() {
   if (jsonHandler.isValid()) {
 #ifdef FEATURE_COUNTDOWN
     countdown.start();
+#endif
+#ifdef FEATURE_DFPLAYER
+    DFPlayerHandler::playTrack(1);
 #endif
 #ifdef FEATURE_AUDIO
     AudioHandler::startSuccess();

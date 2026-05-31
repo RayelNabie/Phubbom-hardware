@@ -32,6 +32,13 @@
       "top": 140,
       "left": 120,
       "attrs": { "common": "anode" }
+    },
+    {
+      "type": "wokwi-slide-switch",
+      "id": "powerSwitch",
+      "top": -80,
+      "left": 0,
+      "attrs": { "label": "Power ON/OFF" }
     }
   ],
   "connections": [
@@ -42,7 +49,9 @@
     [ "esp:6",      "motorIndicator:G", "yellow", [] ],
     [ "motorIndicator:COM", "esp:3V3", "yellow", [] ],
     [ "esp:10",     "rgb:R",      "red",    [] ],
-    [ "rgb:COM",    "esp:3V3",    "red",    [] ]
+    [ "rgb:COM",    "esp:3V3",    "red",    [] ],
+    [ "powerSwitch:1", "esp:5V", "red", [] ],
+    [ "powerSwitch:2", "esp:GND.1", "black", [] ]
   ],
   "dependencies": {}
 }
