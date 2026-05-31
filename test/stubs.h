@@ -8,6 +8,7 @@
 #define LOW  0
 #define OUTPUT       1
 #define INPUT_PULLUP 2
+#define SERIAL_8N1   0
 
 // Controllable globals — tests set deze om hardware te simuleren
 extern unsigned long                                           g_millis;
@@ -30,5 +31,16 @@ struct SerialClass {
     template<typename T> void println(T) {}
     template<typename T> void print(T) {}
     void begin(unsigned long) {}
+    void begin(unsigned long, int, int, int) {}
 };
 extern SerialClass Serial;
+extern SerialClass Serial1;
+
+// DFPlayer Mini stub for testing
+class DFRobotDFPlayerMini {
+public:
+    bool begin(SerialClass&) { return true; }
+    void volume(int) {}
+    void play(int) {}
+    void stop() {}
+};
