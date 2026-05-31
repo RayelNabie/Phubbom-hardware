@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "author": "Anonymous maker",
+  "author": "RayelNabie",
   "editor": "wokwi",
   "parts": [
     { "type": "board-esp32-c3-devkitm-1", "id": "esp", "top": 0, "left": 0, "attrs": {} },
@@ -8,7 +8,7 @@
       "type": "wokwi-pushbutton",
       "id": "btn",
       "top": -80,
-      "left": -120,
+      "left": -160,
       "rotate": 90,
       "attrs": { "color": "red" }
     },
@@ -16,15 +16,33 @@
       "type": "wokwi-buzzer",
       "id": "buzzer",
       "top": -80,
-      "left": 120,
+      "left": 160,
       "attrs": { "label": "Buzzer" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "motorled",
+      "top": 140,
+      "left": -160,
+      "attrs": { "color": "yellow", "label": "Motor" }
+    },
+    {
+      "type": "wokwi-rgb-led",
+      "id": "rgb",
+      "top": 140,
+      "left": 120,
+      "attrs": { "common": "anode" }
     }
   ],
   "connections": [
-    [ "esp:2", "btn:1.r", "green", [] ],
-    [ "btn:2.r", "esp:GND.1", "black", [] ],
-    [ "esp:3", "buzzer:1", "green", [] ],
-    [ "buzzer:2", "esp:GND.2", "black", [] ]
+    [ "esp:2",      "btn:1.r",    "green",  [] ],
+    [ "btn:2.r",    "esp:GND.1",  "black",  [] ],
+    [ "esp:3",      "buzzer:1",   "green",  [] ],
+    [ "buzzer:2",   "esp:GND.2",  "black",  [] ],
+    [ "esp:1",      "motorled:A", "yellow", [] ],
+    [ "motorled:K", "esp:GND.1",  "black",  [] ],
+    [ "esp:10",     "rgb:R",      "red",    [] ],
+    [ "rgb:COM",    "esp:3V3",    "red",    [] ]
   ],
   "dependencies": {}
 }

@@ -1,0 +1,13 @@
+CompileFlags:
+  CompilationDatabase: .
+  Remove:
+    - -fstrict-volatile-bitfields
+    - -fno-tree-switch-conversion
+    - -march=rv32imc*
+    - -mabi=ilp32*
+    - -mfix-esp32-psram-cache-issue
+    - -mfix-esp32-psram-cache-strategy=*
+    - -mlongcalls
+    - -ffunction-sections
+    - -fdata-sections
+    - --param=max-inline-insns-single=*
