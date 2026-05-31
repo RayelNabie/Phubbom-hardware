@@ -8,6 +8,8 @@ std::vector<std::pair<int,int>>                         g_analogWrites;
 std::vector<std::tuple<int,unsigned int,unsigned long>> g_tones;
 SerialClass                                             Serial;
 SerialClass                                             Serial1;
+WiFiClass                                               WiFi;
+WiFiManagerClass                                        wifiManager;
 
 int main(int argc, char** argv) {
     ::testing::InitGoogleTest(&argc, argv);

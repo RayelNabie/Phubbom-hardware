@@ -36,8 +36,13 @@ void CountdownManager::start() {
   active     = true;
 }
 
+void CountdownManager::start(unsigned long customDuration) {
+  duration_ms = customDuration;
+  start();
+}
+
 bool CountdownManager::isActive() const {
-  return active && (millis() - startTime < DurationMs);
+  return active && (millis() - startTime < duration_ms);
 }
 
 void CountdownManager::stop() {

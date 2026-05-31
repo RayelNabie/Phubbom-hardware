@@ -44,3 +44,30 @@ public:
     void play(int) {}
     void stop() {}
 };
+
+// WiFi stubs for testing
+class WiFiClass {
+public:
+    void mode(int) {}
+    bool isConnected() { return true; }
+    const char* localIP() { return "192.168.1.100"; }
+};
+extern WiFiClass WiFi;
+
+class HTTPClient {
+public:
+    int GET(const char*) { return 200; }
+    const char* getString() { return "{\"countdown\":30000,\"audioUrl\":\"https://example.com/0001.wav\"}"; }
+    void end() {}
+    void setConnectTimeout(int) {}
+    int getSize() { return 1024; }
+    void begin(const char*) {}
+};
+
+class WiFiManagerClass {
+public:
+    void autoConnect(const char*, const char*) {}
+    void setSaveConfigCallback(void(*)()) {}
+    void startConfigPortal(const char*) {}
+};
+extern WiFiManagerClass wifiManager;

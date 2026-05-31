@@ -16,6 +16,23 @@ void AudioSystem::initialize() {
 #ifdef FEATURE_DFPLAYER
   DFPlayerHandler::initialize();
 #endif
+
+#ifdef FEATURE_WIFI
+  WiFiHandler::initialize();
+  delay(2000);
+  
+  // Fetch question from API
+  if (WiFiHandler::fetchQuestion(currentQuestion)) {
+    Serial.println("Question fetched successfully");
+    // Download audio file
+    if (WiFiHandler::downloadAudio(currentQuestion.audioUrl, "/MP3/0001.wav")) {
+      Serial.println("Audio downloaded successfully");
+    }
+  } else {
+    Serial.println("Failed to fetch question");
+  }
+#endif
+
   systemInitialized = true;
 }
 
@@ -49,7 +66,7 @@ void AudioSystem::onButtonPressed() {
 
   if (jsonHandler.isValid()) {
 #ifdef FEATURE_COUNTDOWN
-    countdown.start();
+    countdown.start(currentQuestion.countdown);
 #endif
 #ifdef FEATURE_DFPLAYER
     DFPlayerHandler::playTrack(1);
@@ -62,7 +79,7 @@ void AudioSystem::onButtonPressed() {
     AudioHandler::playError();
 #endif
 #ifdef FEATURE_COUNTDOWN
-    countdown.start();
+    countdown.start(currentQuestion.countdown);
 #endif
   }
 }
