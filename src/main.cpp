@@ -1,13 +1,14 @@
 #include <Arduino.h>
 #include "system_manager.h"
 
-AudioSystem system;
+AudioSystem audioSystem;
 
 void setup() {
   Serial.begin(115200);
-  system.initialize();
+  delay(500);
+  audioSystem.initialize();
 }
 
 void loop() {
-  system.update();
+  audioSystem.update();
 }
