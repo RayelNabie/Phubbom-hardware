@@ -7,6 +7,7 @@ std::vector<std::pair<int,int>>                         g_digitalWrites;
 std::vector<std::pair<int,int>>                         g_analogWrites;
 std::vector<std::tuple<int,unsigned int,unsigned long>> g_tones;
 SerialClass                                             Serial;
+SerialClass                                             Serial1;
 
 int main(int argc, char** argv) {
     ::testing::InitGoogleTest(&argc, argv);

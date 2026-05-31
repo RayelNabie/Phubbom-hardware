@@ -4,6 +4,7 @@
 #include "json_handler.h"
 #include "audio_handler.h"
 #include "countdown_manager.h"
+#include "dfplayer_handler.h"
 
 class AudioSystem {
 private:
