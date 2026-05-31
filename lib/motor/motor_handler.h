@@ -1,12 +1,23 @@
-#ifndef MOTOR_HANDLER_H
-#define MOTOR_HANDLER_H
+//
+// Created by Rayel Nabie on 31/05/2026.
+//
 
-#include "hw_config.h"
+#ifndef PHUBBOM_HARDWARE_MOTOR_HANDLER_H
+#define PHUBBOM_HARDWARE_MOTOR_HANDLER_H
 
 class MotorHandler {
+private:
+    static unsigned long pulseStartTime;
+    static unsigned long pulseDuration;
+    static bool isPulsing;
+
 public:
-  static void on()  { analogWrite(MOTOR_PIN, 255); }
-  static void off() { analogWrite(MOTOR_PIN, 0); }
+    static void on();
+    static void off();
+    static void pulse(unsigned long durationMs);
+    static void update();
+    static bool isPulseActive();
 };
 
-#endif
+
+#endif //PHUBBOM_HARDWARE_MOTOR_HANDLER_H
