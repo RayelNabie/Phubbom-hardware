@@ -1,7 +1,5 @@
 # PlatformIO
 .pio/
-compile_commands.json
-.cache/
 
 # IDEs
 .idea/

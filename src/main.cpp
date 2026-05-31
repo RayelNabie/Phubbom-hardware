@@ -1,13 +1,20 @@
 #include <Arduino.h>
 #include "system_manager.h"
 
-AudioSystem system;
+AudioSystem manager;
 
 void setup() {
   Serial.begin(115200);
-  system.initialize();
+  delay(1000);
+
+  Serial.println("=== ESP32-C3 Audio Test System ===");
+
+  manager.initialize();
+
+  Serial.println("Ready! Press the button to play an audio from the json file");
 }
 
 void loop() {
-  system.update();
+  manager.update();
+  delay(50);
 }
