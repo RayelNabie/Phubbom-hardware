@@ -43,6 +43,22 @@ TEST_F(FeatureTest, ButtonPress_PlaysSuccessMelody) {
     EXPECT_FALSE(g_tones.empty());
 }
 
+// Success-audio pulseert mee met fase 1 van de countdown (500ms)
+TEST_F(FeatureTest, SuccessAudio_PulsesWithCountdownPhase1) {
+    AudioSystem system;
+    system.initialize();
+
+    g_digitalReadReturn = LOW;
+    system.update();
+    g_digitalReadReturn = HIGH;
+    g_tones.clear();
+
+    g_millis = 500;
+    system.update();
+
+    EXPECT_EQ(1, g_tones.size());
+}
+
 // Na audio → motor puls na 500ms (fase 1)
 TEST_F(FeatureTest, AfterButtonPress_MotorPulsesAfter500ms) {
     AudioSystem system;
@@ -75,7 +91,7 @@ TEST_F(FeatureTest, AfterButtonPress_LEDTurnsOnAfter500ms) {
     EXPECT_TRUE(pinAnalogWrittenValue(LED_PIN, 0));
 }
 
-// Tweede knopdrukt tijdens countdown → genegeerd (geen audio)
+// Tweede knopdrukt tijdens countdown → genegeerd (geen nieuwe audio-start)
 TEST_F(FeatureTest, SecondButtonPress_IgnoredDuringCountdown) {
     AudioSystem system;
     system.initialize();
@@ -86,7 +102,7 @@ TEST_F(FeatureTest, SecondButtonPress_IgnoredDuringCountdown) {
     system.update();
     g_tones.clear();
 
-    g_millis = 1000;
+    g_millis = 250;
     g_digitalReadReturn = LOW;
     system.update();
 
