@@ -11,8 +11,12 @@ private:
   unsigned long halfPeriod() const;
 
 public:
+  static constexpr unsigned long DurationMs = 30000;
+  static constexpr unsigned long PhaseMs    = 10000;
+
   static int phaseForElapsed(unsigned long elapsed);
   static unsigned long halfPeriodForPhase(int phase);
+  static unsigned long duration();
 
   void start();
   bool isActive() const;

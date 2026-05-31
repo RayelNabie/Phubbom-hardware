@@ -17,6 +17,9 @@ void AudioSystem::initialize() {
 
 void AudioSystem::update() {
   handleButtonInput();
+#ifdef FEATURE_AUDIO
+  AudioHandler::update();
+#endif
 #ifdef FEATURE_COUNTDOWN
   countdown.update();
 #endif
@@ -37,19 +40,19 @@ void AudioSystem::onButtonPressed() {
   if (countdown.isActive()) return;
 #endif
 
-  Serial.println("Button pressed");
-
   if (jsonHandler.isValid()) {
+#ifdef FEATURE_COUNTDOWN
+    countdown.start();
+#endif
 #ifdef FEATURE_AUDIO
-    AudioHandler::playSuccess();
+    AudioHandler::startSuccess();
 #endif
   } else {
 #ifdef FEATURE_AUDIO
     AudioHandler::playError();
 #endif
-  }
-
 #ifdef FEATURE_COUNTDOWN
-  countdown.start();
+    countdown.start();
 #endif
+  }
 }

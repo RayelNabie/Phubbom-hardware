@@ -10,8 +10,8 @@
 #include "led_handler.h"
 
 int CountdownManager::phaseForElapsed(unsigned long elapsed) {
-  if (elapsed < 10000) return 1;
-  if (elapsed < 20000) return 2;
+  if (elapsed < PhaseMs) return 1;
+  if (elapsed < PhaseMs * 2) return 2;
   return 3;
 }
 
@@ -25,6 +25,10 @@ unsigned long CountdownManager::halfPeriod() const {
   return halfPeriodForPhase(phaseForElapsed(millis() - startTime));
 }
 
+unsigned long CountdownManager::duration() {
+  return DurationMs;
+}
+
 void CountdownManager::start() {
   startTime  = millis();
   lastToggle = startTime;
@@ -33,7 +37,7 @@ void CountdownManager::start() {
 }
 
 bool CountdownManager::isActive() const {
-  return active && (millis() - startTime < 30000);
+  return active && (millis() - startTime < DurationMs);
 }
 
 void CountdownManager::stop() {

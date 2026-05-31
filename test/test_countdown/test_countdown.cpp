@@ -31,3 +31,7 @@ TEST(CountdownHalfPeriod, Phase2Is250ms) {
 TEST(CountdownHalfPeriod, Phase3Is125ms) {
     EXPECT_EQ(125UL, CountdownManager::halfPeriodForPhase(3));
 }
+
+TEST(CountdownDuration, DurationIs30Seconds) {
+    EXPECT_EQ(30000UL, CountdownManager::duration());
+}
