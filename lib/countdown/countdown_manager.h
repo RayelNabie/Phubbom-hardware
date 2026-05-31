@@ -7,6 +7,7 @@ private:
   unsigned long lastToggle = 0;
   bool active     = false;
   bool pulseState = false;
+  unsigned long duration_ms = DurationMs;
 
   unsigned long halfPeriod() const;
 
@@ -19,6 +20,7 @@ public:
   static unsigned long duration();
 
   void start();
+  void start(unsigned long customDuration);
   bool isActive() const;
   void stop();
   void update();

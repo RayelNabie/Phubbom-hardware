@@ -7,6 +7,7 @@
 #define FEATURE_LED
 #define FEATURE_COUNTDOWN
 #define FEATURE_DFPLAYER
+#define FEATURE_WIFI
 
 constexpr int BUTTON_PIN = 2;
 constexpr int BUZZER_PIN = 3;

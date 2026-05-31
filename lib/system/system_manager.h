@@ -5,12 +5,14 @@
 #include "audio_handler.h"
 #include "countdown_manager.h"
 #include "dfplayer_handler.h"
+#include "wifi_handler.h"
 
 class AudioSystem {
 private:
   JSONHandler      jsonHandler;
   AudioHandler     audioHandler;
   CountdownManager countdown;
+  QuestionData     currentQuestion;
   bool buttonPressed     = false;
   bool systemInitialized = false;
 
