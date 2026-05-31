@@ -20,11 +20,11 @@
       "attrs": { "label": "Buzzer" }
     },
     {
-      "type": "wokwi-led",
-      "id": "motorled",
+      "type": "wokwi-rgb-led",
+      "id": "motorIndicator",
       "top": 140,
       "left": -160,
-      "attrs": { "color": "yellow", "label": "Motor" }
+      "attrs": { "color": "yellow", "common": "anode" }
     },
     {
       "type": "wokwi-rgb-led",
@@ -39,8 +39,8 @@
     [ "btn:2.r",    "esp:GND.1",  "black",  [] ],
     [ "esp:3",      "buzzer:1",   "green",  [] ],
     [ "buzzer:2",   "esp:GND.2",  "black",  [] ],
-    [ "esp:1",      "motorled:A", "yellow", [] ],
-    [ "motorled:K", "esp:GND.1",  "black",  [] ],
+    [ "esp:6",      "motorIndicator:G", "yellow", [] ],
+    [ "motorIndicator:COM", "esp:3V3", "yellow", [] ],
     [ "esp:10",     "rgb:R",      "red",    [] ],
     [ "rgb:COM",    "esp:3V3",    "red",    [] ]
   ],

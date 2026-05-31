@@ -9,7 +9,7 @@
 
 constexpr int BUTTON_PIN = 2;
 constexpr int BUZZER_PIN = 3;
-constexpr int MOTOR_PIN = 1;
+constexpr int MOTOR_PIN = 6;
 constexpr int LED_PIN   = 10;
 
 #endif

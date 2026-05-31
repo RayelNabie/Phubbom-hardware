@@ -7,6 +7,7 @@
 #include "system_manager.h"
 #include "hw_config.h"
 #include "gpio_manager.h"
+#include "motor_handler.h"
 
 void AudioSystem::initialize() {
   if (systemInitialized) return;
@@ -19,6 +20,9 @@ void AudioSystem::update() {
   handleButtonInput();
 #ifdef FEATURE_AUDIO
   AudioHandler::update();
+#endif
+#ifdef FEATURE_MOTOR
+  MotorHandler::update();
 #endif
 #ifdef FEATURE_COUNTDOWN
   countdown.update();

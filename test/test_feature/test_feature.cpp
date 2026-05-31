@@ -72,7 +72,7 @@ TEST_F(FeatureTest, AfterButtonPress_MotorPulsesAfter500ms) {
     g_millis = 500;
     system.update();
 
-    EXPECT_TRUE(pinAnalogWrittenNonZero(MOTOR_PIN));
+    EXPECT_TRUE(pinAnalogWrittenValue(MOTOR_PIN, 0));
 }
 
 // Na audio → LED aan na 500ms
