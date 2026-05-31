@@ -1,12 +1,12 @@
 #ifndef MOTOR_HANDLER_H
 #define MOTOR_HANDLER_H
 
-#include "config.h"
+#include "hw_config.h"
 
 class MotorHandler {
 public:
-  void on()  { digitalWrite(MOTOR_PIN, HIGH); }
-  void off() { digitalWrite(MOTOR_PIN, LOW); }
+  static void on()  { analogWrite(MOTOR_PIN, 255); }
+  static void off() { analogWrite(MOTOR_PIN, 0); }
 };
 
 #endif

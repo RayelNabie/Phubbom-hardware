@@ -1,17 +1,12 @@
 #ifndef LED_HANDLER_H
 #define LED_HANDLER_H
 
-#include "config.h"
+#include "hw_config.h"
 
 class LEDHandler {
 public:
-  void setColor(bool r, bool g, bool b) {
-    digitalWrite(LED_R_PIN, r ? HIGH : LOW);
-    digitalWrite(LED_G_PIN, g ? HIGH : LOW);
-    digitalWrite(LED_B_PIN, b ? HIGH : LOW);
-  }
-
-  void off() { setColor(false, false, false); }
+  static void on()  { analogWrite(LED_PIN, 0); }
+  static void off() { analogWrite(LED_PIN, 255); }
 };
 
 #endif

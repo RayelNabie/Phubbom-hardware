@@ -9,9 +9,7 @@
 
 const int BUTTON_PIN = 2;
 const int BUZZER_PIN = 3;
-const int MOTOR_PIN  = 1;
-const int LED_R_PIN  = 8;
-const int LED_G_PIN  = 9;
-const int LED_B_PIN  = 10;
+const int MOTOR_PIN = 1;
+const int LED_PIN   = 10;  // RGB LED rode kanaal
 
 #endif
