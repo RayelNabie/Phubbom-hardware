@@ -3,23 +3,29 @@
 
 #include "config.h"
 #include "json_handler.h"
-#include "audio_handler.h"
 #include "gpio_manager.h"
+#include "audio_handler.h"
+#include "motor_handler.h"
+#include "led_handler.h"
+#include "countdown_manager.h"
 
 class AudioSystem {
 private:
-  GPIOManager gpio;
-  JSONHandler jsonHandler;
-  AudioHandler audioHandler;
-  bool buttonPressed = false;
+  GPIOManager      gpio;
+  JSONHandler      jsonHandler;
+  AudioHandler     audioHandler;
+  MotorHandler     motor;
+  LEDHandler       led;
+  CountdownManager countdown;
+  bool buttonPressed     = false;
   bool systemInitialized = false;
 
 public:
-  AudioSystem() {}
+  AudioSystem()
+    : countdown(&motor, &led) {}
 
   void initialize() {
     if (systemInitialized) return;
-
     gpio.init();
     jsonHandler.validate();
     systemInitialized = true;
@@ -27,6 +33,9 @@ public:
 
   void update() {
     handleButtonInput();
+#ifdef FEATURE_COUNTDOWN
+    countdown.update();
+#endif
   }
 
 private:
@@ -41,15 +50,25 @@ private:
   }
 
   void onButtonPressed() {
+#ifdef FEATURE_COUNTDOWN
+    if (countdown.isActive()) return;
+#endif
+
     Serial.println("Button pressed");
 
     if (jsonHandler.isValid()) {
-      Serial.println("JSON geldig - geluid 1 afspelen");
+#ifdef FEATURE_AUDIO
       audioHandler.playSuccess();
+#endif
     } else {
-      Serial.println("JSON ongeldig - geluid 2 afspelen");
+#ifdef FEATURE_AUDIO
       audioHandler.playError();
+#endif
     }
+
+#ifdef FEATURE_COUNTDOWN
+    countdown.start();
+#endif
   }
 };
 
